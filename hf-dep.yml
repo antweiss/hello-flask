@@ -11,7 +11,7 @@ spec:
       protocol: TCP
       targetPort: 5000
   selector:
-      run: orders
+      run: hello
   type: LoadBalancer
   loadBalancerSourceRanges:
   - 0.0.0.0/0
@@ -29,9 +29,8 @@ spec:
     spec:
       containers:
       - name: hello
-        image: otomato/hello:0.1
+        image: otomato/hello:0.2
         ports:
         - containerPort: 5000
   strategy:
     type: Recreate
-minReadySeconds: 5
