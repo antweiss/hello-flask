@@ -1,0 +1,15 @@
+version: '1.0'
+
+steps:
+  build_image:
+    type: build
+    description: build the app
+    image_name: otomato/hello
+    dockerfile: Dockerfile
+    tag: 0.1
+  push:
+    type: push
+    tag: 0.1
+    image_name: otomato/hello
+    registry: Dockerhub
+    fail_fast: false
