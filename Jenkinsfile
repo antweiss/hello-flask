@@ -8,12 +8,25 @@ pipeline {
             }
         }
         
-        stage('test') {
+        stage('build') {
             steps {
                 sh '''
-                cat requirements.txt
+                python add-build-num.py  ${BUILD_NUMBER}
                 '''
             }
         }
-    }
+        
+        stage ('archiving the artifacts') {
+            steps {
+                sh '''
+                tar zcvf hello-${BUILD_NUMBER}.tar.gz application.py requirements.txt  
+                '''
+            }
+        }
+    }        
+    post {
+        success {
+            archiveArtifacts artifacts: '*.tar.gz'
+            }
+        }
 }
