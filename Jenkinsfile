@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('checking out the code') {
             steps {
-                git 'https://github.com/droritzz/hello-flask.git'
+                checkout scm
             }
         }
         
