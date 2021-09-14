@@ -1,19 +1,19 @@
-pipeline{
+pipeline {
     agent {node {label 'builder'}}
 
-    stages{
+    stages {
         stage('checking out the code') {
             steps {
-            git 'https://github.com/droritzz/hello-flask.git'
-                      }
+                git 'https://github.com/droritzz/hello-flask.git'
+            }
+        }
+        
         stage('test') {
-            steps{
+            steps {
                 sh '''
                 cat requirements.txt
                 '''
             }
         }
-        }
     }
 }
-    
